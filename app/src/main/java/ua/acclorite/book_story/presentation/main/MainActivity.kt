@@ -30,6 +30,7 @@ import ua.acclorite.book_story.presentation.history.HistoryModel
 import ua.acclorite.book_story.presentation.history.HistoryScreen
 import ua.acclorite.book_story.presentation.library.LibraryModel
 import ua.acclorite.book_story.presentation.library.LibraryScreen
+import ua.acclorite.book_story.presentation.reading_now.ReadingNowScreen
 import ua.acclorite.book_story.presentation.navigator.NavigatorItem
 import ua.acclorite.book_story.presentation.navigator.StackEvent
 import ua.acclorite.book_story.presentation.settings.SettingsModel
@@ -88,6 +89,13 @@ class MainActivity : AppCompatActivity() {
             ProvideSettings(settings) {
                 val tabs = persistentListOf(
                     NavigatorItem(
+                        screen = ReadingNowScreen,
+                        title = R.string.reading_now_screen,
+                        tooltip = R.string.reading_now_content_desc,
+                        selectedIcon = R.drawable.reading_now_screen_filled,
+                        unselectedIcon = R.drawable.reading_now_screen_outlined
+                    ),
+                    NavigatorItem(
                         screen = LibraryScreen,
                         title = R.string.library_screen,
                         tooltip = R.string.library_content_desc,
@@ -121,7 +129,7 @@ class MainActivity : AppCompatActivity() {
                     ) {
                         Navigator(
                             initialScreen = if (settings.showStartScreen.value) StartScreen
-                            else LibraryScreen,
+                            else ReadingNowScreen,
                             transitionSpec = { lastEvent ->
                                 when (lastEvent) {
                                     StackEvent.DEFAULT -> {
@@ -137,14 +145,14 @@ class MainActivity : AppCompatActivity() {
                             },
                             contentKey = {
                                 when (it) {
-                                    LibraryScreen, HistoryScreen, BrowseScreen -> "tabs"
+                                    ReadingNowScreen, LibraryScreen, HistoryScreen, BrowseScreen -> "tabs"
                                     else -> it
                                 }
                             },
                             backHandlerEnabled = { it != StartScreen }
                         ) { screen ->
                             when (screen) {
-                                LibraryScreen, HistoryScreen, BrowseScreen -> {
+                                ReadingNowScreen, LibraryScreen, HistoryScreen, BrowseScreen -> {
                                     NavigatorTabs(
                                         currentTab = screen,
                                         transitionSpec = {

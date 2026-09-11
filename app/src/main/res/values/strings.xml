@@ -10,6 +10,11 @@
     <string name="default_string">Default</string>
 
     <!-- Screens -->
+    <string name="reading_now_screen">Reading Now</string>
+    <string name="reading_now_content_desc">Reading now</string>
+    <string name="reading_now_continue">Continue Reading</string>
+    <string name="reading_now_recently_opened">RECENTLY OPENED</string>
+    <string name="reading_now_empty">Open a book and it will appear here.</string>
     <string name="library_screen">Library</string>
     <string name="history_screen">History</string>
     <string name="browse_screen">Browse</string>
