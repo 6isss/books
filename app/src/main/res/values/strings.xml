@@ -16,6 +16,10 @@
     <string name="reading_now_recently_opened">RECENTLY OPENED</string>
     <string name="reading_now_empty">Open a book and it will appear here.</string>
     <string name="library_screen">Library</string>
+    <string name="search_screen">Search</string>
+    <string name="search_placeholder">Search your books</string>
+    <string name="search_empty">No books match your search.</string>
+    <string name="collections">Collections</string>
     <string name="history_screen">History</string>
     <string name="browse_screen">Browse</string>
     <string name="settings_screen">Settings</string>

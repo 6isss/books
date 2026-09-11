@@ -14,6 +14,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.CollectionsBookmark
 import androidx.compose.material.icons.outlined.DisplaySettings
 import androidx.compose.material.icons.outlined.Explore
+import androidx.compose.material.icons.outlined.FileOpen
+import androidx.compose.material.icons.outlined.History
 import androidx.compose.material.icons.outlined.LocalLibrary
 import androidx.compose.material.icons.outlined.Palette
 import androidx.compose.runtime.Composable
@@ -31,7 +33,9 @@ fun SettingsLayout(
     navigateToAppearanceSettings: () -> Unit,
     navigateToReaderSettings: () -> Unit,
     navigateToLibrarySettings: () -> Unit,
-    navigateToBrowseSettings: () -> Unit
+    navigateToBrowseSettings: () -> Unit,
+    navigateToHistory: () -> Unit,
+    navigateToImport: () -> Unit
 ) {
     LazyColumnWithScrollbar(
         Modifier
@@ -92,6 +96,28 @@ fun SettingsLayout(
                 description = stringResource(id = R.string.browse_settings_desc)
             ) {
                 navigateToBrowseSettings()
+            }
+        }
+
+        item {
+            SettingsLayoutItem(
+                index = 5,
+                icon = Icons.Outlined.History,
+                title = stringResource(id = R.string.history_screen),
+                description = stringResource(id = R.string.history_content_desc)
+            ) {
+                navigateToHistory()
+            }
+        }
+
+        item {
+            SettingsLayoutItem(
+                index = 6,
+                icon = Icons.Outlined.FileOpen,
+                title = stringResource(id = R.string.browse_screen),
+                description = stringResource(id = R.string.browse_content_desc)
+            ) {
+                navigateToImport()
             }
         }
     }

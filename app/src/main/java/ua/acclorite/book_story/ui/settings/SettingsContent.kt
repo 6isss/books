@@ -21,6 +21,8 @@ fun SettingsContent(
     navigateToReaderSettings: () -> Unit,
     navigateToLibrarySettings: () -> Unit,
     navigateToBrowseSettings: () -> Unit,
+    navigateToHistory: () -> Unit,
+    navigateToImport: () -> Unit,
     navigateToStart: () -> Unit,
     navigateBack: () -> Unit
 ) {
@@ -32,6 +34,8 @@ fun SettingsContent(
         navigateToReaderSettings = navigateToReaderSettings,
         navigateToLibrarySettings = navigateToLibrarySettings,
         navigateToBrowseSettings = navigateToBrowseSettings,
+        navigateToHistory = navigateToHistory,
+        navigateToImport = navigateToImport,
         navigateToStart = navigateToStart,
         navigateBack = navigateBack
     )

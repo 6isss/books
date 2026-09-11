@@ -42,7 +42,7 @@ import ua.acclorite.book_story.R
 import ua.acclorite.book_story.core.helpers.calculateProgress
 import ua.acclorite.book_story.presentation.library.model.LibraryTitlePosition
 import ua.acclorite.book_story.presentation.library.model.SelectableBook
-import ua.acclorite.book_story.ui.common.components.common.AsyncCoverImage
+import ua.acclorite.book_story.ui.common.components.book.PhysicalBookCover
 import ua.acclorite.book_story.ui.common.components.common.StyledText
 
 @Composable
@@ -81,8 +81,6 @@ fun LibraryGridItem(
             modifier = Modifier
                 .aspectRatio(1f / 1.5f)
                 .fillMaxWidth()
-                .clip(MaterialTheme.shapes.medium)
-                .background(MaterialTheme.colorScheme.surfaceContainerLow)
                 .combinedClickable(
                     onClick = {
                         if (hasSelectedItems) selectBook(null)
@@ -93,26 +91,10 @@ fun LibraryGridItem(
                     }
                 )
         ) {
-            if (book.data.coverImage != null) {
-                AsyncCoverImage(
-                    uri = book.data.coverImage,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .clip(MaterialTheme.shapes.medium)
-                )
-            } else {
-                Icon(
-                    imageVector = Icons.Default.Image,
-                    contentDescription = stringResource(
-                        id = R.string.cover_image_not_found_content_desc
-                    ),
-                    modifier = Modifier
-                        .align(Alignment.Center)
-                        .fillMaxWidth(0.7f)
-                        .aspectRatio(1f),
-                    tint = MaterialTheme.colorScheme.surfaceContainerHigh
-                )
-            }
+            PhysicalBookCover(
+                uri = book.data.coverImage,
+                modifier = Modifier.fillMaxSize()
+            )
 
             if (showProgress) {
                 StyledText(

@@ -39,7 +39,7 @@ fun BrowseEffects(effects: SharedFlow<BrowseEffect>, focusRequester: FocusReques
                 }
 
                 is BrowseEffect.OnNavigateToLibrary -> {
-                    navigator.push(LibraryScreen, saveInBackStack = false)
+                    navigator.pop()
                 }
 
                 is BrowseEffect.OnUpdatePinnedPaths -> {

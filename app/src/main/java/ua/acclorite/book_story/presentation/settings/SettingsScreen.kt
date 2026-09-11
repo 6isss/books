@@ -11,6 +11,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import kotlinx.parcelize.Parcelize
+import ua.acclorite.book_story.presentation.browse.BrowseScreen
+import ua.acclorite.book_story.presentation.history.HistoryScreen
 import ua.acclorite.book_story.presentation.navigator.Screen
 import ua.acclorite.book_story.presentation.start.StartScreen
 import ua.acclorite.book_story.ui.common.components.top_bar.collapsibleTopAppBarScrollBehavior
@@ -45,6 +47,12 @@ object SettingsScreen : Screen, Parcelable {
             },
             navigateToBrowseSettings = {
                 navigator.push(BrowseSettingsScreen)
+            },
+            navigateToHistory = {
+                navigator.push(HistoryScreen)
+            },
+            navigateToImport = {
+                navigator.push(BrowseScreen)
             },
             navigateToStart = {
                 settings.showStartScreen.update(true)

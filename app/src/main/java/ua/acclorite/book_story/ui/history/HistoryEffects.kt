@@ -61,7 +61,7 @@ fun HistoryEffects(
                 }
 
                 is HistoryEffect.OnNavigateToLibrary -> {
-                    navigator.push(LibraryScreen, saveInBackStack = false)
+                    navigator.pop()
                 }
 
                 is HistoryEffect.OnNavigateToBookInfo -> {

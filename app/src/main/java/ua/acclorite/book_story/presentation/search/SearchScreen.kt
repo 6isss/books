@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-package ua.acclorite.book_story.presentation.reading_now
+package ua.acclorite.book_story.presentation.search
 
 import android.os.Parcelable
 import androidx.compose.runtime.Composable
@@ -18,14 +18,14 @@ import ua.acclorite.book_story.presentation.navigator.Screen
 import ua.acclorite.book_story.presentation.reader.ReaderScreen
 import ua.acclorite.book_story.presentation.settings.SettingsScreen
 import ua.acclorite.book_story.ui.navigator.LocalNavigator
-import ua.acclorite.book_story.ui.reading_now.ReadingNowContent
+import ua.acclorite.book_story.ui.search.SearchContent
 
 @Parcelize
-object ReadingNowScreen : Screen, Parcelable {
+object SearchScreen : Screen, Parcelable {
 
     @Composable
     override fun Content() {
-        val model = hiltViewModel<ReadingNowModel>()
+        val model = hiltViewModel<SearchModel>()
         val state = model.state.collectAsStateWithLifecycle()
         val navigator = LocalNavigator.current
 
@@ -33,17 +33,18 @@ object ReadingNowScreen : Screen, Parcelable {
             model.refresh()
         }
 
-        ReadingNowContent(
+        SearchContent(
             state = state.value,
+            onQueryChange = { model.search(it) },
             navigateToReader = { bookId ->
                 HistoryScreen.insertHistoryChannel.trySend(bookId)
                 navigator.push(ReaderScreen(bookId = bookId))
             },
-            navigateToSettings = {
-                navigator.push(SettingsScreen)
-            },
             navigateToBookInfo = { bookId ->
                 navigator.push(BookInfoScreen(bookId = bookId))
+            },
+            navigateToSettings = {
+                navigator.push(SettingsScreen)
             }
         )
     }

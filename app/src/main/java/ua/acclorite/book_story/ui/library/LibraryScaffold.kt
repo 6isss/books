@@ -72,7 +72,25 @@ fun LibraryScaffold(
             .pullRefresh(refreshState),
         containerColor = MaterialTheme.colorScheme.surface,
         topBar = {
-            LibraryTopBar(
+            androidx.compose.foundation.layout.Column {
+                if (!hasSelectedItems && !showSearch) {
+                    val navigator = ua.acclorite.book_story.ui.navigator.LocalNavigator.current
+                    LibraryAppleHeader(
+                        onEdit = { selectBooks(LibraryEvent.OnSelectBooks(books)) },
+                        onCollections = {
+                            navigator.push(
+                                ua.acclorite.book_story.presentation.settings.LibrarySettingsScreen
+                            )
+                        },
+                        navigateToSettings = {
+                            navigator.push(
+                                ua.acclorite.book_story.presentation.settings.SettingsScreen
+                            )
+                        }
+                    )
+                }
+
+                LibraryTopBar(
                 books = books,
                 selectedItemsCount = selectedItemsCount,
                 hasSelectedItems = hasSelectedItems,
@@ -95,8 +113,9 @@ fun LibraryScaffold(
                 clearSelectedBooks = clearSelectedBooks,
                 showMoveDialog = showMoveDialog,
                 showDeleteDialog = showDeleteDialog,
-                showFilterBottomSheet = showFilterBottomSheet
-            )
+                    showFilterBottomSheet = showFilterBottomSheet
+                )
+            }
         }
     ) { paddingValues ->
         Box(
